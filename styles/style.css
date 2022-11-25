@@ -1,0 +1,27 @@
+.main-class{
+    display: flex;
+    flex-direction: column;
+
+}
+.section-class{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50vw;
+  
+}
+.div-class{
+    width: 5vw;
+    height: 5vw;
+    border:solid 1px rgb(151, 23, 23);
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+html{
+    height: 100%;
+}
