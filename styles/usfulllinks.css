@@ -1,0 +1,13 @@
+.image-title {
+    width: 60vw;
+    display: inline-block;
+    text-align: left;
+   font-size: 1.75em;
+
+}
+html{
+    font-size: 20px;
+}
+a {
+    font-size: 5px;
+}
