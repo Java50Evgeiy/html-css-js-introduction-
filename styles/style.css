@@ -1,35 +1,128 @@
-.board board-row:nth-child(odd) {
-    display: flex;
-    flex-direction: row;
-    
-}
-.board-row{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-.cell-white{
-    background-color: white;
-    width: 5vw;
-    height: 5vw;
-    border: solid 1px rgb(16, 25, 41);
-    font-size: 60px;
-    text-align: center;
-}
-.cell-black{
-    background-color: rgb(46, 38, 38);
-    width: 5vw;
-    height: 5vw;
-    border: solid 1px rgb(16, 25, 41);
-    font-size: 60px;
-    text-align: center;
+html{
+    height: 100%;
 }
 body{
+    height: 100%;
+    /* background-color: rgb(57, 52, 47); */
+    background: url(../image/ukr.jpeg);
+    background-size: cover;
     display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 115px;
-
+    flex-direction: column;
+    margin: 0;
+}
+.logo{
+  display: block;
+  text-align: center;
+    background-color: rgb(94, 91, 89);
+    font-size: 5vw;
+   
     
+}
+.main-class{
+    display: flex;
+    color: brown;
+    border-radius: 100%;
+
+flex-direction: column;
+justify-content: center;
+/* flex-grow: 1; */
+justify-content: space-evenly;
+
+
+}
+.box-1{
+    display: flex;
+    justify-content:space-around;
+   text-align: center;
+    flex-direction:row;
+    
+}
+.details-container{
+    display: flex;
+ text-align: center;
+    flex-direction:column;
+    justify-content: center;
+}
+.details-image{
+    width: 60vw;
+    height: 50vw;
+    border-radius: 25%;
+}
+.details-title{
+    display: block;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+.thumbnails-list{
+display: flex;
+flex-wrap: wrap;
+max-height: 37vh;
+overflow-y: scroll;
+list-style: none;
+justify-content: space-around;
+padding: 0;
+margin-top: 3vh;
+}
+.thumbnails-items{
+    display: block;
+    border: solid 2px coral;
+    margin-top: 2vh;
+    border-radius: 25rem;
+    overflow: hidden;
+}
+.thumbnails-anchor{
+    text-decoration: none;
+}
+.thumbnails-image{
+    display: flex;
+    width: 25vw;
+    height: 15vw;
+}
+.thumbnails-title{
+    display: block;
+    text-align: center;
+    background-color: burlywood;
+}
+
+@media(min-width:560px){
+    .main-class{
+        flex-direction: row;
+    }
+    .thumbnails-list{
+        order: -1;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        max-height: 80vh;
+        justify-content: flex-start;
+
+
+    }
+    .thumbnails-items{
+        min-height: 12vw;
+    }
+    .thumbnails-title{
+        height: 3vh;
+    }
+    @media(min-width:1000px){
+        .main-class{
+            flex-direction:row-reverse;
+
+            
+        }
+        .details-container{
+            flex-direction:column;
+            justify-content: center;
+            text-align: center;
+            
+
+        }
+        .box-1{
+          
+        
+            text-align: center;
+             flex-direction:row;
+             
+        }
+      
+    }
 }
