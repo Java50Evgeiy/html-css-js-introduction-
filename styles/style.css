@@ -158,6 +158,19 @@ body
     background-size: cover;
 
 }
+
+@font-face {
+    font-family: airstream;
+    src: url(./fonts/Airstream-webfont.eot);
+    src: url(./fonts/Airstream-webfont.ttf);
+
+}
+@font-face {
+    font-family: lakeshor;
+    src: url(./fonts/LAKESHOR-webfont.svg);
+    src: url(./fonts/LAKESHOR-webfont.woff);
+}
+
 .logo 
 {
     display: block;
@@ -200,7 +213,8 @@ h2
 {
     display: block;
     background-color: rgb(41, 45, 48);
-  
+    font-family: airstream;
+    font-style:initial;
     position: absolute;
     bottom: 4vh;
     left: -2vw;
@@ -252,7 +266,7 @@ h2
 }
 @media (min-width: 560px) 
 {
-
+ 
 body
 {
     --thumbnails-image-width: 12vw;
