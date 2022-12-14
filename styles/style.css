@@ -7,16 +7,15 @@
 @font-face {
     font-family: lakeshor;
     src: url(./fonts/LAKESHOR-webfont.svg);
-
-    src: url(./fonts/LAKESHOR-webfont.svg);
+     src: url(./fonts/LAKESHOR-webfont.svg);
 }
 html {
     height: 100%
 }
 body
 {
-    --thumbnails-image-width: 25vw;
-    --thumbnails-image-height: 15vw;
+    --thumbnails-image-width: 26vw;
+    --thumbnails-image-height: 16vw;
     --thumbnails-title-height: calc(var(--thumbnails-image-height) * 0.33);
     --details-image-width: 60vw;
     --details-image-height: 50vw;
@@ -53,9 +52,11 @@ h2
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:space-around;
     flex-grow: 1;
 }
+
+
 .details-container 
 {
     display: flex;
@@ -63,6 +64,9 @@ h2
     align-items: center;
     margin-bottom: 2vh;
    
+}
+.hidden .details-container{
+    display: none;
 }
 .details-frame{
     position: relative;
@@ -77,23 +81,35 @@ h2
 {
     display: block;
     background-color: rgb(41, 45, 48);
-    font-family: airstream;
-    font-style:initial;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style:italic;
+ 
+
     position: absolute;
     bottom: 4vh;
-    left: -2vw;
+    left:5vw;
+    color:rgb(245, 173, 173);
     
+}
+#hide-button{
+    position: absolute;
+    right:5.5vw ;
+    top:2vh;
+  color: rgb(23, 25, 24);
 }
 .thumbnails-list 
 {
     display: flex;
     flex-wrap: wrap;
-    max-height: 37vh;
+    max-height: 35vh;
     overflow-y: scroll;
     list-style: none;
     justify-content: space-around;
     padding-left: 0;
     margin-top: 3vh;
+}
+.hidden .thumbnails-list{
+    max-height: 75vh;
 }
 .thumbnails-item 
 {
@@ -102,8 +118,10 @@ h2
     border-radius: 25%;
     overflow: hidden;
     min-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
-    min-width: var(--thumbnails-image-width);
-    max-width:var(--thumbnails-image-width); 
+    max-height: calc(var(--thumbnails-image-height) + var(--thumbnails-title-height));
+   
+     min-width: var(--thumbnails-image-width);
+     max-width:var(--thumbnails-image-width); 
     margin-left: 1vw;
 }
 .thumbnails-item:hover{
@@ -124,9 +142,11 @@ h2
 {
     display: block;
     text-align: center;
-    background-color: rgb(103, 96, 87);
+    background-color: rgb(99, 85, 65);
     color: black;   
     height: var(--thumbnails-title-height);
+    line-height: var(--thumbnails-title-height);
+
 }
 @media (min-width: 560px) 
 {
@@ -166,6 +186,12 @@ body
         order: -1;
         justify-content: flex-start;
         padding-right: 2vw;
+}
+.hidden .thumbnails-list{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around
+   
 }
 }
 
