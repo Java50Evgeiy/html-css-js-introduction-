@@ -1,15 +1,25 @@
 const detailsImage = document.querySelector(".details-image");
 const detailsTitle = document.querySelector(".details-title");
+const detailsContainer = document.querySelector(".details-container");
 const anchorElements = document.querySelectorAll(".thumbnails-anchor")
 const mainElement = document.querySelector(".main-class");
-const HIDDEN= "hidden";
+const HIDDEN = "hidden";
+const IS_POINT= "is-point";
 function showDetails(){
 mainElement.classList.remove("hidden");
+detailsContainer.classList.add(IS_POINT);
+setTimeout(function(){
+    detailsContainer.classList.remove(IS_POINT);
+
+})
+}
+function hideDetails(){
+
 }
 function hideDetails(){
 mainElement.classList.add("hidden");
 }
-function setDetails(anchor) {
+function setDetails(anchor) { 
     const dataImage = anchor.getAttribute("data-details-image");
     detailsImage.src = dataImage;
     showDetails();
