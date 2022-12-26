@@ -1,118 +1,109 @@
-// let num = 25.325;
-// num=40.5;
-
-// num=Math.floor(num);
-// num=Math.trunc(num);
-// num=Math.cell(num);
-//  num=Math.round(num);
-// num **=2;//num = num **2;
 
 
-//strings
-// let str= "a'bc'd";
-// let str1= 'a"bc"d';  //mogno stavit skobki kak tebe udobnnee
+function myParseInt (str,base)
+{
+    base=base ? base : 10;
+    let res = 0;
+    if (str[0]==='-' && base <=10){
+        for(let i =1 ; i< str.length ; i++)
+        {
+            if(getCode(str[i]<=9 && getCode(str[i]>=0))){
+                res=res*base + getCode(str[i]);
+            }
+            else{
+                break;
+            }
+        }
+        return res;
+    } else if (str[0]==='-' && base >10 ){
+            for(let i =1 ; i< str.length ; i++){
+                res=res*base + getCode(str[i]);
+
+            }
+            return res;
+        }else if(base<=10){
+                for(let i =1 ; i< str.length ; i++){
+                    res=res*base + getCode(str[i]);
+            }return res;
+}
+}
+function getCode(symbol){
+    return symbol <= "9" ? +symbol : -1; 
+}
+
+console.log(myParseInt("-123.456irf",10))
 
 
-// let res = "123" + 56;
-// let res1= "123" - 56;
-// let res2= "123" * 56;
-// let res3=  Math.round("123" / 56);
-// let res4= "123" / "2";
-// let res5= "abc" /8;
-
-// //boolean
-// let a =10;
-// let error = false;
-// let res6= true + true;
-// let res7= true && false;
-// let res8= 123 && 256;
-// let res9= a && 256 / a;
-// let massage = error && "some error happenning"
-// let res10 = a || 10;
-// let res11 = a || 10;
-// let res12 = "123" > "9";
-// let res13 = "123" > 9;
-
-//home work 
-// function getDigitsSum(){
-//     let sum = 0;
-//     for(let i = 0; i < 10; i++){
-//         sum += i;
-//     }
 
 
-    //computes sum of all digits in the integer part of the number
-    //number may be either negative or positiv or 0
+
+
+// let srt = "123m"
+// let num = parseInt(srt) +10;
+// let str1="js.5"
+// let nunInt = parseInt(str1, 32);
+// let numFloat = parseFloat(str1);
+// function myParseInt(str, base) { 
+//     base = base || 10; 
+//     let res = 0; 
+//     for(let i = 0; i < str.length; i++) { 
+//         res = res * base + getCode(str[i]); 
+//     } 
+//     return res; 
+// } 
+// function getCode(symbol) { 
+//     symbol = symbol.toLowerCase(); 
+//     const codeA = "a".charCodeAt(); 
+//     const res = symbol <= "9" ? +symbol : symbol.charCodeAt() - codeA + 10; 
+//     return res; 
+// } 
+ 
+// let str1 = "ff"; 
+// let str2 = "123"; 
+// let str22 = "Java"; 
+// let str3 = "123m"; 
+// let str4 = "123.5"; 
+// let num = parseInt(str1, 16); 
+// let myNum = myParseInt(str1, 16); 
+// num = parseInt(str2); 
+// myNum = myParseInt(str2); 
+// num = parseInt(str22, 36); 
+// myNum = myParseInt(str22, 36); 
+// num = parseInt(str3); 
+// myNum = myParseInt(str3); 
+// num = parseInt(str4); 
+// myNum = myParseInt(str4);
+// let number=255;
+// let str = "" +number;
+// str = number.toString(36);
+// function myToString(nnumber,base){
+// let res="";
+// base = base ||10;
+// number= Math.trunc(Math.abs(number));
+// do{
+//     const ddigit= number % base;
+//     const digit=getSymbol(digit,base);
+//     rea=symbol+res;
+//     number= Math.trunk(number/base)
+// }while(number);
+// return rea;
 // }
-//function computeExpression(expressionStr){
-//example of expression "9000 / ((10+20))**2"
-//returns 10
-    //task for searching in internet
-    //only one line code
+// function getSymbol(digit){
+//     const codeA = "a".charCodeAt();
+//     let symbol;
+//     if(digit<10){
+//         symbol= ""+digit;
 
-//}
-//console.log(computeExpression(9000 / ((10+20))**2)) ; prints 10;
-//function printAnanas(){
-    //use omly "A" and "S"
-    //print ananas 
-//}
-//function reverse(number){
-    //returns string with digits of given number inn the reverse ordder
-    //example reverse(1234) should return "4321"
-    
-
-//}
-// let n = 10;
-// let count = 0;
-// while (n>=0){
-//     n--;
-//     count++;
-//}
-
-//equlity operation (operacii sravnenia)
-// let ret15="123"==123; //true
-// let ret16="123"===123; //false
-
-// //strind function for hw
-// const str = "aBdTYgg";
-// str= str.toLowerCase(); // s etoi funkciei vse buet s malenkoi bukvi
+//     }else{
+//         const codeAscii = digit - 10 + codeA;
+//         symbol= String.fromCharCode(codeAscii);
+//     }
+// return symbol;
 
 
-
-
-function getDigitsSum(number) {
-    number=Math.trunc(Math.abs(number));
-
-    let sum = 0;
-
-   do{
-    const digit =number % 10;
-    nnumber = Math.trunc(number/10);
-    sum += digit;
-} while(number);
-return sum;
-
-}
-
-function computeExpression(expressionString) {
-    const res=eval(expressionString);
-    return res;
-}
-function printAnanas(){
-const res = ("A"+ +"A"+"AS").toLowerCase();
-console.log (res);
-
-}
-function reverse(number){
-    let res = number <0? "-" :"" ;
-    if(number<0){
-        number=-number;
- } number=Math.trunc(number);
- do{
-    const digit =number % 10;
-    number = Math.trunc(number/10);
-    res += digit;
-    } while(number);
-    return res;
-
- }
+// }
+// let num100 = 990500;
+// let str100= num100.toString();
+// let myStr100 = myToString(num100);
+// str100 = num100.toString(36);
+// myStr100 = myToString(num100,36);
