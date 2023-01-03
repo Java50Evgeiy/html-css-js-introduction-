@@ -1,109 +1,78 @@
-
-
-function myParseInt (str,base)
-{
-    base=base ? base : 10;
-    let res = 0;
-    if (str[0]==='-' && base <=10){
-        for(let i =1 ; i< str.length ; i++)
-        {
-            if(getCode(str[i]<=9 && getCode(str[i]>=0))){
-                res=res*base + getCode(str[i]);
-            }
-            else{
-                break;
-            }
+// const ar = [] ;
+// const ar1 = [1,2,3,4,]
+// ar.push(...ar1);
+// ar.push('abc');
+function getRandomNumber(min, max) {
+   
+    return min + Math.trunc(Math.random() * (max - min + 1));
+}
+function getRandomMatrix(rows, columns, min, max){
+    const matrix = [];
+    for(let i = 0; i < rows; i++) {
+        matrix.push([]);
+        for (let j = 0; j < columns; j++) {
+            matrix[i].push(getRandomNumber(min, max))
         }
-        return res;
-    } else if (str[0]==='-' && base >10 ){
-            for(let i =1 ; i< str.length ; i++){
-                res=res*base + getCode(str[i]);
-
-            }
-            return res;
-        }else if(base<=10){
-                for(let i =1 ; i< str.length ; i++){
-                    res=res*base + getCode(str[i]);
-            }return res;
+    }
+    return matrix;
 }
+//const matrix = getRandomMatrix(3, 4, 0, 1);
+const ar10 = [1,2,3,4,5];
+const str =ar10.join('_');
+
+//HTML
+//<ul class="list_class">
+//  <li class="item_class">
+//     <div class="white"> </div>
+//  </li>
+// .............
+//<li class="item_class">
+//     <div class="black"> </div>
+//  </li>
+//</ul>
+function getHtmlUl(array) {
+   
+    return `<ul class="list_class">
+      ${getListItems(array)}
+      </ul>`;
 }
-function getCode(symbol){
-    return symbol <= "9" ? +symbol : -1; 
+function getListItems(array) {
+    const res = [];
+    for(let i = 0; i < array.length; i++) {
+        res[i] = `
+                <li class="item_class">
+                    <div class="${array[i] === 0 ? "white" : "black"}">
+                     </div>
+                 </li>`
+    }
+    return res.join('');
 }
+const strClass = getRandomNumber(0, 1) === 0 ? 'white' : 'black';
+const str1 = "hello world";
+const str2 = 'hello ' + '"world"';
+const str3 = `class="${strClass}"`;
+function matrixTransp(matrix) {
+    //TODO
+    //returns transp matrix
+    // matrix = [[1, 2], //input
+    //           [3, 4], 
+    //           [4, 5]        
+    //            ]
+    //  output   [1, 3, 4]
+    //           [2, 4, 5] 
+    const res =[];
+    for(let i = 0; i < matrix[0].length; i++){
+        res[i] = [];
+        for(let j = 0; j < matrix.length; j++) {
+            res[i][j] = matrix[j][i];
+        }
+    }
+    return res;
+}
+const matrix = [[1, 2], 
+              [3, 4], 
+              [4, 5]        
+               ];
+//console.log(matrixTransp(matrix));
+console.log(getHtmlUl([0,1,1,0,0]))
 
-console.log(myParseInt("-123.456irf",10))
-
-
-
-
-
-
-// let srt = "123m"
-// let num = parseInt(srt) +10;
-// let str1="js.5"
-// let nunInt = parseInt(str1, 32);
-// let numFloat = parseFloat(str1);
-// function myParseInt(str, base) { 
-//     base = base || 10; 
-//     let res = 0; 
-//     for(let i = 0; i < str.length; i++) { 
-//         res = res * base + getCode(str[i]); 
-//     } 
-//     return res; 
-// } 
-// function getCode(symbol) { 
-//     symbol = symbol.toLowerCase(); 
-//     const codeA = "a".charCodeAt(); 
-//     const res = symbol <= "9" ? +symbol : symbol.charCodeAt() - codeA + 10; 
-//     return res; 
-// } 
- 
-// let str1 = "ff"; 
-// let str2 = "123"; 
-// let str22 = "Java"; 
-// let str3 = "123m"; 
-// let str4 = "123.5"; 
-// let num = parseInt(str1, 16); 
-// let myNum = myParseInt(str1, 16); 
-// num = parseInt(str2); 
-// myNum = myParseInt(str2); 
-// num = parseInt(str22, 36); 
-// myNum = myParseInt(str22, 36); 
-// num = parseInt(str3); 
-// myNum = myParseInt(str3); 
-// num = parseInt(str4); 
-// myNum = myParseInt(str4);
-// let number=255;
-// let str = "" +number;
-// str = number.toString(36);
-// function myToString(nnumber,base){
-// let res="";
-// base = base ||10;
-// number= Math.trunc(Math.abs(number));
-// do{
-//     const ddigit= number % base;
-//     const digit=getSymbol(digit,base);
-//     rea=symbol+res;
-//     number= Math.trunk(number/base)
-// }while(number);
-// return rea;
-// }
-// function getSymbol(digit){
-//     const codeA = "a".charCodeAt();
-//     let symbol;
-//     if(digit<10){
-//         symbol= ""+digit;
-
-//     }else{
-//         const codeAscii = digit - 10 + codeA;
-//         symbol= String.fromCharCode(codeAscii);
-//     }
-// return symbol;
-
-
-// }
-// let num100 = 990500;
-// let str100= num100.toString();
-// let myStr100 = myToString(num100);
-// str100 = num100.toString(36);
-// myStr100 = myToString(num100,36);
