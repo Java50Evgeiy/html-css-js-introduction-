@@ -62,6 +62,7 @@ function checkWord(){
 function processLetter(){
   let arAnswer = Array.from(answer);
   let guessLetter = letterInputElement.value;
+  letterInputElement.value=''; 
   arAnswer.map(function(element,index){
     if(element === guessLetter){
       document.getElementById(index).style.background = "white";
