@@ -1,31 +1,13 @@
-import { Company, createEmployee } from "./service/company.js";
-import { EmployeeForm } from "./ui/employee-form.js";
-import { getRandomNumber } from "./utils/random.js";
-import { Table } from "./ui/table.js";
+import { sleep } from "./utils/sleep.js";
+const TIMEOUT = 5000;
+// const promise = sleep(TIMEOUT);
 
-    const schema = [ 
-        {columnName: 'Employee ID', fieldName: 'id'}, 
-        {columnName: 'Name', fieldName: 'name'}, 
-        {columnName: 'Birth year', fieldName: 'birthYear'},
-        {columnName: 'Salary (NIS)',fieldName: 'salary'},
-        {columnName: 'Country', fieldName: 'country'},
-        {columnName: 'City', fieldName: 'city'},
-]
+// promise.then (() => console.log(`after ${TIMEOUT/1000} seconds`));
+// console.log(`waiting for ${TIMEOUT/1000} seconds`)
+const fun = async()=>{
+    await sleep(TIMEOUT);
+console.log(`after ${TIMEOUT/1000} seconds`);
 
-const company = new Company();
-const employeeForm = new EmployeeForm("form-section");
-const tableEmployees = new Table("table-section", "Employees", schema);
-function addEmployee(employeeData) {
-   
-    const employee = createEmployee( employeeData.name,
-        +employeeData.birthYear, +employeeData.salary,
-        employeeData.city, employeeData.country);
-       const res = company.addEmployee(employee);
-        if(!res.messege){
-            employeeData.id = res.id;
-            tableEmployees.addrow(employeeData); 
-        }
-        return res.messege;
-   
 }
-employeeForm.addFormHandler(addEmployee)
+fun();
+console.log(`waiting for ${TIMEOUT/1000} seconds`)
