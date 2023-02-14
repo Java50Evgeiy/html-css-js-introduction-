@@ -1,21 +1,45 @@
-export const weatherConfig = {
-    url: "https://api.open-meteo.com/v1/gfs?hourly=temperature_2m&timezone=IST",
-    cities: {
-        Rehovot: {latitude: 31.8928, longitude: 34.8113},
-        Haifa:{latitude: 32.7940, longitude: 34.9896},
-        Jerusalem: {latitude: 31.7683, longitude: 35.2137},
-        Tel_Aviv: {latitude: 32.0853, longitude: 34.7818 },
-        Eilat: {latitude: 29.5577, longitude: 34.9519}
+export class DataProcessor {
+    #url;
+    #cities;
+    constructor(url, cities) {
+        this.#url = url;
+        this.#cities = cities;
+    }
+    async #getData(actualUrl) {
+        const responseFromServer =
+            await fetch(actualUrl);
+        return responseFromServer.json();
+
+
+    }
+    async getTemperatureData(city, startDate, endDate, hourFrom, hourTo) {
+        const latLong = this.#cities[city];
+        const actualUrl = this.#getActualUrl(latLong.latitude, latLong.longitude,
+            startDate, endDate);
+        const rawData = await this.#getData(actualUrl);
+        return processRawData(rawData, hourFrom, hourTo);
+    }
+    #getActualUrl(latitude, longitude, startDate, endDate) {
+        return `${this.#url}&latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}`
+    }
 }
+function processRawData(rawData, hourFrom, hourTo) {
     
-}export const weatherConfig = {
-    url: "https://api.open-meteo.com/v1/gfs?hourly=temperature_2m&timezone=IST",
-    cities: {
-        Rehovot: {latitude: 31.8928, longitude: 34.8113},
-        Haifa:{latitude: 32.7940, longitude: 34.9896},
-        Jerusalem: {latitude: 31.7683, longitude: 35.2137},
-        Tel_Aviv: {latitude: 32.0853, longitude: 34.7818 },
-        Eilat: {latitude: 29.5577, longitude: 34.9519}
+    const timeArray = getHoursElements(rawData.hourly.time, hourFrom, hourTo);
+    const temperatureArray =getHoursElements(rawData.hourly.temperature_2m, hourFrom, hourTo); ;
+    return timeArray.map((t, index) => {
+        const res = {};
+        const dateTime = t.split("T");
+        res.date = dateTime[0];
+        res.hour = dateTime[1];
+        res.temperature = temperatureArray[index];
+        return res;
+
+    })
 }
-    
+function getHoursElements (array, hourFrom, hourTo) {
+    return array.filter((__, index) => {
+        const hour = index % 24;
+        return hour >= hourFrom && hour <= hourTo
+    } )
 }
