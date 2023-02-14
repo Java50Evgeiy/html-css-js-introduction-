@@ -1,4 +1,4 @@
-mport { weatherConfig } from "./config/weather-config.js";
+import { weatherConfig } from "./config/weather-config.js";
 import { DataProcessor } from "./service/DataProcessor.js";
 import { DataForm } from "./ui/data-from.js";
 const dataProcessor = new DataProcessor(weatherConfig.url, weatherConfig.cities);
