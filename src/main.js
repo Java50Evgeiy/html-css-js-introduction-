@@ -1,13 +1,9 @@
-import { sleep } from "./utils/sleep.js";
-const TIMEOUT = 5000;
-// const promise = sleep(TIMEOUT);
-
-// promise.then (() => console.log(`after ${TIMEOUT/1000} seconds`));
-// console.log(`waiting for ${TIMEOUT/1000} seconds`)
-const fun = async()=>{
-    await sleep(TIMEOUT);
-console.log(`after ${TIMEOUT/1000} seconds`);
-
+import { weatherConfig } from "./config/weather-config.js";
+import { DataProcessor } from "./service/DataProcessor.js";
+const dataProcessor = new DataProcessor(weatherConfig.url, weatherConfig.cities);
+async function displayTemperatures() {
+    const data = await dataProcessor.getTemperatureData("Tel_Aviv",
+     "2023-02-15", "2023-02-16", 14, 16);
+    console.log(data)
 }
-fun();
-console.log(`waiting for ${TIMEOUT/1000} seconds`)
+displayTemperatures();
